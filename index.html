@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Game</title>
+  </head>
+  <body>
+    <h1>
+      I am thinking of a number between 1-10. See if you can guess the number...
+    </h1>
+
+    <form action="/find" method="GET">
+      <label for="">First Name</label><br />
+      <input type="text" required name="name" placeholder="Enter your name" /><br />
+      <label for="">Enter a Number</label><br />
+      <input
+        type="number"
+        name="num"
+        required
+        placeholder="Number between 1-10"
+      /><br /><br />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document.querySelector("form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        location = `/${encodeURIComponent(
+          document.querySelector("input[name='name']").value
+        )}?num=${encodeURIComponent(
+          document.querySelector("input[name='num']").value
+        )}`;
+      });
+    </script>
+  </body>
+</html>
